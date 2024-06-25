@@ -16,6 +16,7 @@ let player2 = {
 
 let score1 = 0;
 let score2 = 0;
+let round = 1;
 
 document.getElementById('startGameButton').addEventListener('click', () => {
     player1.name = document.getElementById('player1Name').value || 'Player 1';
@@ -23,6 +24,7 @@ document.getElementById('startGameButton').addEventListener('click', () => {
     
     document.getElementById('player1Score').textContent = `${player1.name}: 0`;
     document.getElementById('player2Score').textContent = `${player2.name}: 0`;
+    document.getElementById('roundCounter').textContent = round;
     
     document.getElementById('gameArea').style.display = 'block';
 });
@@ -57,9 +59,12 @@ function playRound(player1Hand) {
     document.getElementById('roundResult').textContent += ` ${result}`;
     document.getElementById('player1Score').textContent = `${player1.name}: ${score1}`;
     document.getElementById('player2Score').textContent = `${player2.name}: ${score2}`;
+    document.getElementById('roundCounter').textContent = round;
     
     const gameHistoryItem = document.createElement('li');
     gameHistoryItem.classList.add('list-group-item');
-    gameHistoryItem.textContent = `${player1.name}: ${player1Hand}, ${player2.name}: ${player2Hand} - ${result}`;
+    gameHistoryItem.textContent = `Round ${round}: ${player1.name} played ${player1Hand}, ${player2.name} played ${player2Hand} - ${result}`;
     document.getElementById('gameHistory').appendChild(gameHistoryItem);
+    
+    round++;
 }
