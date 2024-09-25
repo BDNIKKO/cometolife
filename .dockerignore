@@ -1,0 +1,9 @@
+# Ignore git folder
+.git
+
+# Node modules (if you later install any dependencies)
+node_modules
+
+# Logs and temporary files
+*.log
+tmp/
